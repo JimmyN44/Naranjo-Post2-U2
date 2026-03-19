@@ -1,0 +1,55 @@
+Documentación de Microinteracciones
+
+Nombre descriptivo:
+Confirmación visual y celebración al completar un hábito diario
+
+Trigger:
+El usuario presiona el botón o checkbox para marcar un hábito como completado en el Dashboard.
+
+Rules:
+El sistema actualiza el estado del hábito a “completado”, incrementa el progreso diario y recalcula el porcentaje del progreso circular. Además, se activa el sistema de niveles para verificar si el usuario ha alcanzado un nuevo logro o racha. El componente del hábito cambia visualmente a estado completado.
+
+Feedback:
+Se muestra una animación de confetti durante aproximadamente 300–500ms, acompañada de un cambio de estado visual del hábito (color, ícono o check). El progreso circular se anima suavemente hasta el nuevo porcentaje (animación easing). Opcionalmente, se puede incluir una vibración háptica leve para reforzar la acción.
+
+Loop / Modo:
+Si el usuario desmarca el hábito, el sistema revierte el estado, actualiza el progreso y elimina el efecto visual de completado sin animación de celebración. Si ocurre un error (ej: fallo en persistencia), el estado vuelve al anterior y se muestra un mensaje de error mediante un snackbar o alerta.
+
+Anotación en Figma:
+Frame del Dashboard mostrando:
+
+Estado inicial del hábito (no completado)
+
+Estado final (completado)
+
+Variante del progreso circular actualizado
+
+Overlay o frame adicional mostrando la animación de confetti
+
+Microinteracción 2: Guardado de nuevo hábito desde formulario
+
+Nombre descriptivo:
+Animación de guardado y validación en la creación de un hábito
+
+Trigger:
+El usuario presiona el botón “Guardar hábito” en la pantalla de creación.
+
+Rules:
+El sistema valida los campos del formulario (nombre, frecuencia, etc.). Si los datos son válidos, el botón cambia a estado loading y se guarda el hábito en localStorage. Luego, el sistema redirige al Dashboard y actualiza la lista de hábitos. Si hay errores, se detiene el flujo y se marcan los campos inválidos.
+
+Feedback:
+El botón muestra un spinner (duración aproximada de 300ms), seguido de un cambio a estado exitoso (ícono de check con animación de escala tipo spring). En caso de error, los inputs muestran borde rojo, ícono de advertencia y mensaje descriptivo con role="alert" para accesibilidad.
+
+Loop / Modo:
+Si el usuario corrige los errores, el formulario vuelve a estado normal y permite reintentar el guardado. En caso de fallo en almacenamiento, el botón regresa a estado inicial y se muestra un mensaje de error global. El proceso puede repetirse múltiples veces sin pérdida de datos ingresados.
+
+Anotación en Figma:
+Frame de la pantalla de creación mostrando:
+
+Estado inicial del formulario
+
+Estado loading del botón
+
+Estado de éxito
+
+Estado de error con inputs resaltados
